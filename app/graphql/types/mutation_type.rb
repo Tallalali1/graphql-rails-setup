@@ -1,12 +1,47 @@
-# frozen_string_literal: true
-
 module Types
   class MutationType < Types::BaseObject
-    # TODO: remove me
-    field :test_field, String, null: false,
-      description: "An example field added by the generator"
-    def test_field
-      "Hello World"
+    # field :login, Types::AccountType, null: false do
+    #   argument :email, String, required: true
+    #   argument :password, String, required: true
+    # end
+    # def login(email:, password:)
+    #   account = Account.find_by(email: email)
+    #   if account&.authenticate(password)
+    #     account.token = account.to_sgid(expires_in: 12.hours, for: 'graphql')
+    #     account
+    #   else
+    #     raise GraphQL::ExecutionError.new("Invalid email or password")
+    #   end
+    # end
+    field :edit_article, Types::ArticleType do
+      argument :name, String
+      argument :description, String
+      argument :id, Integer
     end
+    def edit_article(id:, name:, description:)
+      article = Article.find_by(id: id)
+      if article
+        article.update(name: name, description: description)
+        article
+      end
+    end
+
+    # field :register, Types::AccountType, null: false do
+    #   argument :account_type, Types::AccountTypeType, required: true
+    #   argument :name, String, required: true
+    #   argument :company_number, String, required: false
+    #   argument :date_of_birth, String, required: false
+    #   argument :email, String, required: true
+    #   argument :password, String, required: true
+    # end
+    # def register(**kwargs)
+    #   account = Account.new(kwargs)
+    #   if account.save
+    #     account.token = account.to_sgid(expires_in: 12.hours, for: 'graphql')
+    #     account
+    #   else
+    #     raise GraphQL::ExecutionError.new("Register failed.")
+    #   end
+    # end
   end
 end
