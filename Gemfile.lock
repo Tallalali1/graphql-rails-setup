@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/rmosolgo/graphiql-rails.git
+  revision: 8d3c96190cbe2004be99b23c28d28d96962bb8d0
+  specs:
+    graphiql-rails (1.10.0)
+      railties
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -249,6 +256,7 @@ DEPENDENCIES
   capybara
   debug
   error_highlight (>= 0.4.0)
+  graphiql-rails!
   graphql (~> 2.3)
   importmap-rails
   jbuilder

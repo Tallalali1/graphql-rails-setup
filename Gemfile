@@ -69,4 +69,4 @@ group :test do
 end
 
 gem "graphql", "~> 2.3"
-gem "graphiql-rails", group: :development
+gem "graphiql-rails", github: "rmosolgo/graphiql-rails", group: :development
